@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body{margin:0;background:#EDE3D6;}
+  a{color:#2E1B24;text-decoration:none;}
+  a:hover{color:#B08D57;}
+</style>
+</helmet>
+
+<div style="font-family:'Cormorant Garamond',serif;background:#EDE3D6;color:#2E1B24;min-height:100vh;">
+
+  <header style="position:sticky;top:0;z-index:50;background:#EDE3D6;border-bottom:1px solid rgba(46,27,36,0.14);">
+    <div style="max-width:1280px;margin:0 auto;padding:22px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+      <a href="./Home.dc.html" style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(20px,2.4vw,26px);letter-spacing:0.03em;color:#2E1B24;">VOYVELLE</a>
+      <nav style="display:flex;gap:clamp(16px,3vw,40px);align-items:center;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.14em;flex-wrap:wrap;">
+        <a href="./Home.dc.html">HOME</a>
+        <a href="./Shop.dc.html" style="color:#B08D57;border-bottom:1px solid #B08D57;padding-bottom:4px;">SHOP</a>
+        <a href="./Story.dc.html">OUR STORY</a>
+        <a href="./Contact.dc.html">CONTACT</a>
+      </nav>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E1B24" stroke-width="1.5"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+    </div>
+  </header>
+
+  <section style="max-width:1280px;margin:0 auto;padding:clamp(50px,7vw,80px) 32px 20px;text-align:center;">
+    <div style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.24em;color:#B08D57;margin-bottom:14px;">THE COLLECTION</div>
+    <h1 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(34px,4.6vw,54px);margin:0 0 16px;">Passport Covers</h1>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;max-width:520px;margin:0 auto;color:#3B2130;opacity:0.85;">Full-grain leather, hand-stitched in New York. Choose the color that matches your next departure.</p>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:20px 32px 0;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <sc-for list="{{ filters }}" as="f" hint-placeholder-count="7">
+      <button onClick="{{ f.onClick }}" style="font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.08em;padding:10px 22px;border-radius:100px;border:1px solid #2E1B24;background:{{ f.bg }};color:{{ f.fg }};cursor:pointer;transition:all .15s ease;">{{ f.label }}</button>
+    </sc-for>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:48px 32px 100px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:40px;">
+      <sc-for list="{{ visibleProducts }}" as="p" hint-placeholder-count="6">
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <a href="./Product.dc.html" style="display:block;width:100%;aspect-ratio:4/5;border-radius:14px;overflow:hidden;">
+            <image-slot id="{{ p.slotId }}" shape="rect" placeholder="{{ p.placeholder }}"></image-slot>
+          </a>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+            <div>
+              <a href="./Product.dc.html" style="font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;">{{ p.name }}</a>
+              <div style="display:flex;align-items:center;gap:8px;margin-top:6px;">
+                <span style="width:12px;height:12px;border-radius:50%;background:{{ p.swatch }};display:inline-block;border:1px solid rgba(46,27,36,0.2);"></span>
+                <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;opacity:0.75;">{{ p.color }}</span>
+              </div>
+            </div>
+            <div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;">{{ p.price }}</div>
+          </div>
+          <button style="font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.08em;padding:13px;border-radius:100px;border:1px solid #2E1B24;background:transparent;color:#2E1B24;cursor:pointer;" style-hover="background:#2E1B24;color:#EDE3D6;">ADD TO CART</button>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <footer style="background:#2E1B24;color:#EDE3D6;padding:70px 32px 36px;">
+    <div style="max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap;">
+      <div style="max-width:340px;">
+        <div style="font-family:'Poppins',sans-serif;font-weight:800;font-size:22px;letter-spacing:0.03em;margin-bottom:14px;">VOYVELLE</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;line-height:1.6;opacity:0.85;margin:0;">Where to next?</p>
+      </div>
+      <nav style="display:flex;gap:40px;flex-wrap:wrap;font-family:'Poppins',sans-serif;font-size:12px;letter-spacing:0.1em;">
+        <a href="./Home.dc.html" style="color:#EDE3D6;">HOME</a>
+        <a href="./Story.dc.html" style="color:#EDE3D6;">OUR STORY</a>
+        <a href="./Contact.dc.html" style="color:#EDE3D6;">CONTACT</a>
+      </nav>
+      <svg width="108" height="108" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="58" fill="none" stroke="#EDE3D6" stroke-width="1" opacity="0.6"/>
+        <circle cx="60" cy="60" r="43" fill="none" stroke="#EDE3D6" stroke-width="1" opacity="0.6"/>
+        <path id="stampPathShop" d="M 60,17 A 43,43 0 1,1 59.9,17" fill="none"/>
+        <text font-family="Poppins" font-size="6.6" letter-spacing="2.2" fill="#EDE3D6"><textPath href="#stampPathShop" startOffset="0%">VOYVELLE &middot; NYC &middot; EST. 2026 &middot; NEW YORK CITY &middot; </textPath></text>
+        <text x="60" y="65" text-anchor="middle" font-family="Poppins" font-weight="800" font-size="17" fill="#EDE3D6">V</text>
+      </svg>
+    </div>
+    <div style="max-width:1280px;margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(237,227,214,0.18);font-family:'Poppins',sans-serif;font-size:11px;letter-spacing:0.06em;opacity:0.6;">&copy; 2026 Voyvelle. All rights reserved.</div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const PRODUCTS = [
+  { slotId: 'shop-1', placeholder: 'Cognac tan passport cover', name: 'The Voyager', color: 'Cognac Tan', swatch: '#A9713F', price: '$148' },
+  { slotId: 'shop-2', placeholder: 'Deep plum passport cover', name: 'The Nomad', color: 'Deep Plum', swatch: '#3B2130', price: '$148' },
+  { slotId: 'shop-3', placeholder: 'Onyx black passport cover', name: 'The Wanderer', color: 'Onyx Black', swatch: '#1C1A1B', price: '$148' },
+  { slotId: 'shop-4', placeholder: 'Bone cream passport cover', name: 'The Drifter', color: 'Bone Cream', swatch: '#EDE3D6', price: '$158' },
+  { slotId: 'shop-5', placeholder: 'Forest green passport cover', name: 'The Atlas', color: 'Forest Green', swatch: '#3B4A34', price: '$148' },
+  { slotId: 'shop-6', placeholder: 'Burgundy passport cover', name: 'The Odyssey', color: 'Burgundy', swatch: '#6B2530', price: '$158' },
+];
+const COLORS = ['All', 'Cognac Tan', 'Deep Plum', 'Onyx Black', 'Bone Cream', 'Forest Green', 'Burgundy'];
+
+class Component extends DCLogic {
+  state = { active: 'All' };
+  renderVals() {
+    const active = this.state.active;
+    return {
+      filters: COLORS.map(c => ({
+        label: c === 'All' ? 'ALL' : c.toUpperCase(),
+        onClick: () => this.setState({ active: c }),
+        bg: c === active ? '#2E1B24' : 'transparent',
+        fg: c === active ? '#EDE3D6' : '#2E1B24',
+      })),
+      visibleProducts: active === 'All' ? PRODUCTS : PRODUCTS.filter(p => p.color === active),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body{margin:0;background:#EDE3D6;}
+  a{color:#2E1B24;text-decoration:none;}
+  a:hover{color:#B08D57;}
+</style>
+</helmet>
+
+<div style="font-family:'Cormorant Garamond',serif;background:#EDE3D6;color:#2E1B24;">
+
+  <header style="position:sticky;top:0;z-index:50;background:#EDE3D6;border-bottom:1px solid rgba(46,27,36,0.14);">
+    <div style="max-width:1280px;margin:0 auto;padding:22px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+      <a href="./Home.dc.html" style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(20px,2.4vw,26px);letter-spacing:0.03em;color:#2E1B24;">VOYVELLE</a>
+      <nav style="display:flex;gap:clamp(16px,3vw,40px);align-items:center;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.14em;flex-wrap:wrap;">
+        <a href="./Home.dc.html">HOME</a>
+        <a href="./Shop.dc.html" style="color:#B08D57;border-bottom:1px solid #B08D57;padding-bottom:4px;">SHOP</a>
+        <a href="./Story.dc.html">OUR STORY</a>
+        <a href="./Contact.dc.html">CONTACT</a>
+      </nav>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E1B24" stroke-width="1.5"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+    </div>
+  </header>
+
+  <section style="max-width:1280px;margin:0 auto;padding:16px 32px 0;font-family:'Poppins',sans-serif;font-size:11px;letter-spacing:0.08em;opacity:0.6;">
+    <a href="./Shop.dc.html">SHOP</a> &nbsp;/&nbsp; THE NOMAD
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:24px 32px clamp(60px,8vw,90px);display:grid;grid-template-columns:1.1fr 1fr;gap:56px;">
+
+    <div style="display:flex;flex-direction:column;gap:14px;min-width:0;">
+      <div style="width:100%;aspect-ratio:4/5;border-radius:16px;overflow:hidden;">
+        <image-slot id="prod-main" shape="rect" placeholder="Drop main product photo — deep plum passport cover, closed, on linen"></image-slot>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+        <div style="aspect-ratio:1;border-radius:10px;overflow:hidden;"><image-slot id="prod-thumb-1" shape="rect" placeholder="Open cover interior"></image-slot></div>
+        <div style="aspect-ratio:1;border-radius:10px;overflow:hidden;"><image-slot id="prod-thumb-2" shape="rect" placeholder="Stitching detail"></image-slot></div>
+        <div style="aspect-ratio:1;border-radius:10px;overflow:hidden;"><image-slot id="prod-thumb-3" shape="rect" placeholder="Engraved initials detail"></image-slot></div>
+        <div style="aspect-ratio:1;border-radius:10px;overflow:hidden;"><image-slot id="prod-thumb-4" shape="rect" placeholder="In hand, on the go"></image-slot></div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:22px;min-width:0;">
+      <div>
+        <h1 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(30px,3.4vw,40px);margin:0 0 8px;">The Nomad</h1>
+        <p style="font-family:'Poppins',sans-serif;font-weight:600;font-size:20px;margin:0;">{{ displayPrice }}</p>
+      </div>
+
+      <p style="font-size:17px;line-height:1.75;color:#3B2130;margin:0;">Cut from a single hide of full-grain deep plum leather, The Nomad softens and darkens with every trip. A snug interior pocket holds your passport secure; a slim card slot keeps a boarding pass close at hand.</p>
+
+      <div>
+        <div style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.16em;color:#3B2130;opacity:0.7;margin-bottom:10px;">COLOR &mdash; {{ selectedColor }}</div>
+        <div style="display:flex;gap:12px;">
+          <sc-for list="{{ colors }}" as="c" hint-placeholder-count="6">
+            <button onClick="{{ c.onClick }}" style="width:30px;height:30px;border-radius:50%;background:{{ c.swatch }};border:2px solid {{ c.ring }};cursor:pointer;padding:0;"></button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid rgba(46,27,36,0.15);border-bottom:1px solid rgba(46,27,36,0.15);padding:22px 0;display:flex;flex-direction:column;gap:16px;">
+        <label style="display:flex;align-items:center;gap:12px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.04em;cursor:pointer;">
+          <input type="checkbox" checked="{{ engrave }}" onChange="{{ toggleEngrave }}" style="width:18px;height:18px;accent-color:#2E1B24;"/>
+          Add initials engraving &mdash; +$18
+        </label>
+        <sc-if value="{{ engrave }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:14px;padding-left:2px;">
+            <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+              <input type="text" value="{{ initials }}" onChange="{{ handleInitials }}" maxlength="3" placeholder="ABC" style="width:90px;font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;font-size:16px;padding:10px 14px;border:1px solid rgba(46,27,36,0.3);border-radius:8px;background:#F6F0E7;color:#2E1B24;"/>
+              <div style="display:flex;gap:16px;font-family:'Poppins',sans-serif;font-size:12px;">
+                <label style="display:flex;align-items:center;gap:6px;cursor:pointer;"><input type="radio" name="engravefont" checked="{{ fontIsSerif }}" onChange="{{ setFontSerif }}"/> Serif</label>
+                <label style="display:flex;align-items:center;gap:6px;cursor:pointer;"><input type="radio" name="engravefont" checked="{{ fontIsBlock }}" onChange="{{ setFontBlock }}"/> Block</label>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:16px;">
+              <div style="width:64px;height:64px;border-radius:10px;background:{{ selectedSwatch }};display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <span style="color:#D8B968;font-size:16px;font-weight:700;letter-spacing:0.08em;font-family:{{ previewFontFamily }};">{{ previewInitials }}</span>
+              </div>
+              <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;opacity:0.7;">Gold-foil preview on {{ selectedColor }}</div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <button style="font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.1em;background:#2E1B24;color:#EDE3D6;padding:18px;border:none;border-radius:100px;cursor:pointer;" style-hover="background:#3B2130;">ADD TO CART &mdash; {{ displayPrice }}</button>
+
+      <div style="display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.6;color:#3B2130;background:#F6F0E7;padding:16px 18px;border-radius:10px;">
+        <span style="color:#B08D57;font-size:16px;">&#10022;</span>
+        <span>A portion of this purchase supports organizations creating opportunity around the world.</span>
+      </div>
+
+      <div>
+        <div style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.16em;color:#3B2130;opacity:0.7;margin-bottom:10px;">MATERIALS &amp; CARE</div>
+        <ul style="margin:0;padding-left:18px;font-size:16px;line-height:1.8;color:#3B2130;">
+          <li>Full-grain genuine leather, hand-cut and stitched</li>
+          <li>Interior passport pocket + card slot</li>
+          <li>Hand-finished edges, waxed thread</li>
+          <li>Wipe clean with a soft, dry cloth</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:900px;margin:0 auto;padding:0 32px clamp(70px,9vw,110px);">
+    <div style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.24em;color:#B08D57;margin-bottom:14px;text-align:center;">CUSTOMER REVIEWS</div>
+    <h2 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(26px,3vw,34px);margin:0 0 40px;text-align:center;">What Travelers Say</h2>
+    <div style="display:flex;flex-direction:column;gap:0;">
+      <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="3">
+        <div style="padding:28px 0;border-top:1px solid rgba(46,27,36,0.14);">
+          <div style="color:#B08D57;font-size:15px;letter-spacing:2px;margin-bottom:10px;">{{ r.stars }}</div>
+          <p style="font-size:17px;line-height:1.7;font-style:italic;margin:0 0 12px;color:#3B2130;">&ldquo;{{ r.text }}&rdquo;</p>
+          <div style="font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.04em;">{{ r.name }} <span style="opacity:0.5;font-weight:400;">&mdash; {{ r.place }}</span></div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <footer style="background:#2E1B24;color:#EDE3D6;padding:70px 32px 36px;">
+    <div style="max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap;">
+      <div style="max-width:340px;">
+        <div style="font-family:'Poppins',sans-serif;font-weight:800;font-size:22px;letter-spacing:0.03em;margin-bottom:14px;">VOYVELLE</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;line-height:1.6;opacity:0.85;margin:0;">Where to next?</p>
+      </div>
+      <nav style="display:flex;gap:40px;flex-wrap:wrap;font-family:'Poppins',sans-serif;font-size:12px;letter-spacing:0.1em;">
+        <a href="./Home.dc.html" style="color:#EDE3D6;">HOME</a>
+        <a href="./Story.dc.html" style="color:#EDE3D6;">OUR STORY</a>
+        <a href="./Contact.dc.html" style="color:#EDE3D6;">CONTACT</a>
+      </nav>
+      <svg width="108" height="108" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="58" fill="none" stroke="#EDE3D6" stroke-width="1" opacity="0.6"/>
+        <circle cx="60" cy="60" r="43" fill="none" stroke="#EDE3D6" stroke-width="1" opacity="0.6"/>
+        <path id="stampPathProduct" d="M 60,17 A 43,43 0 1,1 59.9,17" fill="none"/>
+        <text font-family="Poppins" font-size="6.6" letter-spacing="2.2" fill="#EDE3D6"><textPath href="#stampPathProduct" startOffset="0%">VOYVELLE &middot; NYC &middot; EST. 2026 &middot; NEW YORK CITY &middot; </textPath></text>
+        <text x="60" y="65" text-anchor="middle" font-family="Poppins" font-weight="800" font-size="17" fill="#EDE3D6">V</text>
+      </svg>
+    </div>
+    <div style="max-width:1280px;margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(237,227,214,0.18);font-family:'Poppins',sans-serif;font-size:11px;letter-spacing:0.06em;opacity:0.6;">&copy; 2026 Voyvelle. All rights reserved.</div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const COLORS = [
+  { name: 'Cognac Tan', swatch: '#A9713F' },
+  { name: 'Deep Plum', swatch: '#3B2130' },
+  { name: 'Onyx Black', swatch: '#1C1A1B' },
+  { name: 'Bone Cream', swatch: '#EDE3D6' },
+  { name: 'Forest Green', swatch: '#3B4A34' },
+  { name: 'Burgundy', swatch: '#6B2530' },
+];
+const BASE_PRICE = 148;
+const ENGRAVE_PRICE = 18;
+
+const REVIEWS = [
+  { stars: '★★★★★', text: "The leather is even richer in person, and it's already picked up a beautiful patina after three trips.", name: 'Elena R.', place: 'Chicago, IL' },
+  { stars: '★★★★★', text: "Had my initials engraved for a gift. My sister cried opening it at the airport gate.", name: 'Marcus T.', place: 'Austin, TX' },
+  { stars: '★★★★☆', text: "Beautifully made and the give-back mission sold me. Wish it came with a matching luggage tag.", name: 'Priya S.', place: 'Brooklyn, NY' },
+];
+
+class Component extends DCLogic {
+  state = { colorIndex: 1, engrave: true, initials: 'JD', fontStyle: 'serif' };
+
+  renderVals() {
+    const s = this.state;
+    const selected = COLORS[s.colorIndex];
+    const price = BASE_PRICE + (s.engrave ? ENGRAVE_PRICE : 0);
+    return {
+      colors: COLORS.map((c, i) => ({
+        swatch: c.swatch,
+        ring: i === s.colorIndex ? '#2E1B24' : 'rgba(46,27,36,0.25)',
+        onClick: () => this.setState({ colorIndex: i }),
+      })),
+      selectedColor: selected.name,
+      selectedSwatch: selected.swatch,
+      displayPrice: `$${price}`,
+      engrave: s.engrave,
+      toggleEngrave: () => this.setState({ engrave: !s.engrave }),
+      initials: s.initials,
+      handleInitials: (e) => this.setState({ initials: e.target.value.toUpperCase().slice(0, 3) }),
+      previewInitials: s.initials || 'ABC',
+      previewFontFamily: s.fontStyle === 'serif' ? "'Cormorant Garamond',serif" : "'Poppins',sans-serif",
+      fontIsSerif: s.fontStyle === 'serif',
+      fontIsBlock: s.fontStyle === 'block',
+      setFontSerif: () => this.setState({ fontStyle: 'serif' }),
+      setFontBlock: () => this.setState({ fontStyle: 'block' }),
+      reviews: REVIEWS,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

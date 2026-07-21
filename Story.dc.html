@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body{margin:0;background:#EDE3D6;}
+  a{color:#2E1B24;text-decoration:none;}
+  a:hover{color:#B08D57;}
+</style>
+</helmet>
+
+<div style="font-family:'Cormorant Garamond',serif;background:#EDE3D6;color:#2E1B24;">
+
+  <header style="position:sticky;top:0;z-index:50;background:#EDE3D6;border-bottom:1px solid rgba(46,27,36,0.14);">
+    <div style="max-width:1280px;margin:0 auto;padding:22px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+      <a href="./Home.dc.html" style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(20px,2.4vw,26px);letter-spacing:0.03em;color:#2E1B24;">VOYVELLE</a>
+      <nav style="display:flex;gap:clamp(16px,3vw,40px);align-items:center;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.14em;flex-wrap:wrap;">
+        <a href="./Home.dc.html">HOME</a>
+        <a href="./Shop.dc.html">SHOP</a>
+        <a href="./Story.dc.html" style="color:#B08D57;border-bottom:1px solid #B08D57;padding-bottom:4px;">OUR STORY</a>
+        <a href="./Contact.dc.html">CONTACT</a>
+      </nav>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E1B24" stroke-width="1.5"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+    </div>
+  </header>
+
+  <section style="position:relative;height:56vh;min-height:380px;overflow:hidden;">
+    <image-slot id="story-hero" shape="rect" placeholder="Drop photo — leather-cutting workbench in the NYC studio"></image-slot>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(46,27,36,0.15),rgba(46,27,36,0.65));display:flex;align-items:flex-end;pointer-events:none;">
+      <div style="max-width:1280px;margin:0 auto;padding:0 32px 56px;width:100%;box-sizing:border-box;">
+        <div style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.28em;color:#EDE3D6;opacity:0.85;margin-bottom:14px;">OUR STORY</div>
+        <h1 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(36px,5.4vw,64px);color:#EDE3D6;margin:0;">Made for the Journey</h1>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:760px;margin:0 auto;padding:clamp(64px,9vw,110px) 32px;">
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(24px,2.6vw,30px);line-height:1.5;color:#3B2130;margin:0 0 36px;">Travel begins long before takeoff. It begins at the desk, laying out documents. It begins in the choosing of what to carry, and how.</p>
+    <p style="font-size:19px;line-height:1.85;margin:0 0 28px;">Voyvelle started in a small studio in New York City with one belief: the object you carry into the world should feel like it belongs to you. Not a mass-produced accessory pulled off a shelf, but something cut, stitched, and finished by hand &mdash; carrying the small imperfections that only handwork leaves behind.</p>
+    <p style="font-size:19px;line-height:1.85;margin:0 0 28px;">Each cover begins as a single hide of full-grain leather, chosen for its grain and character. Our makers cut every panel by hand, burnish every edge, and stitch every seam on machines that have lived in this studio for decades. The result sits at the intersection of art, function, and emotion &mdash; a passport cover meant to be held before it's ever opened.</p>
+    <p style="font-size:19px;line-height:1.85;margin:0 0 28px;">We think of travel as more than a destination. It's the anticipation in packing a bag, the small ritual of tucking your passport away, the promise of somewhere new. We wanted to make something worthy of that feeling.</p>
+    <p style="font-size:19px;line-height:1.85;margin:0;">That's also why a portion of every order goes toward organizations creating opportunity and positive impact around the world. We believe the privilege of travel comes with a responsibility to the places &mdash; and the people &mdash; that make it possible.</p>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:0 32px 90px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;">
+    <div style="aspect-ratio:3/4;border-radius:14px;overflow:hidden;"><image-slot id="story-1" shape="rect" placeholder="Hands stitching leather"></image-slot></div>
+    <div style="aspect-ratio:3/4;border-radius:14px;overflow:hidden;"><image-slot id="story-2" shape="rect" placeholder="Leather hides and tools"></image-slot></div>
+    <div style="aspect-ratio:3/4;border-radius:14px;overflow:hidden;"><image-slot id="story-3" shape="rect" placeholder="Finished passport covers in a row"></image-slot></div>
+  </section>
+
+  <section style="background:#2E1B24;color:#EDE3D6;padding:clamp(70px,9vw,110px) 32px;text-align:center;">
+    <div style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.24em;color:#B08D57;margin-bottom:20px;">THE GIVE-BACK MISSION</div>
+    <p style="max-width:720px;margin:0 auto;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(22px,2.6vw,28px);line-height:1.5;">Every Voyvelle cover carries a small commitment forward &mdash; a share of each sale supports organizations working toward opportunity and positive change in the communities travelers pass through.</p>
+  </section>
+
+  <footer style="background:#F6F0E7;padding:70px 32px 36px;">
+    <div style="max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap;align-items:flex-start;">
+      <div style="max-width:340px;">
+        <div style="font-family:'Poppins',sans-serif;font-weight:800;font-size:22px;letter-spacing:0.03em;margin-bottom:14px;color:#2E1B24;">VOYVELLE</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;line-height:1.6;color:#3B2130;margin:0;">Where to next?</p>
+      </div>
+      <nav style="display:flex;gap:40px;flex-wrap:wrap;font-family:'Poppins',sans-serif;font-size:12px;letter-spacing:0.1em;">
+        <a href="./Home.dc.html">HOME</a>
+        <a href="./Shop.dc.html">SHOP</a>
+        <a href="./Contact.dc.html">CONTACT</a>
+      </nav>
+      <svg width="108" height="108" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="58" fill="none" stroke="#2E1B24" stroke-width="1" opacity="0.5"/>
+        <circle cx="60" cy="60" r="43" fill="none" stroke="#2E1B24" stroke-width="1" opacity="0.5"/>
+        <path id="stampPathStory" d="M 60,17 A 43,43 0 1,1 59.9,17" fill="none"/>
+        <text font-family="Poppins" font-size="6.6" letter-spacing="2.2" fill="#2E1B24"><textPath href="#stampPathStory" startOffset="0%">VOYVELLE &middot; NYC &middot; EST. 2026 &middot; NEW YORK CITY &middot; </textPath></text>
+        <text x="60" y="65" text-anchor="middle" font-family="Poppins" font-weight="800" font-size="17" fill="#2E1B24">V</text>
+      </svg>
+    </div>
+    <div style="max-width:1280px;margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(46,27,36,0.14);font-family:'Poppins',sans-serif;font-size:11px;letter-spacing:0.06em;color:#3B2130;opacity:0.6;">&copy; 2026 Voyvelle. All rights reserved.</div>
+  </footer>
+
+</div>
+
+</x-dc>
+</body>
+</html>
